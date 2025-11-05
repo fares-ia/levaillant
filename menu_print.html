@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Vaillant - Menu à Imprimer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;600&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a2e;
+            --accent-gold: #d4af37;
+            --text-dark: #2a2a2a;
+            --text-muted: #666;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background: white;
+        }
+
+        /* Configuration pour l'impression A5 */
+        @page {
+            size: A5;
+            margin: 10mm;
+        }
+
+        @media print {
+            .page-break {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Structure des pages */
+        .page {
+            width: 148mm;
+            min-height: 210mm;
+            padding: 8mm;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+        }
+
+        /* En-tête */
+        .header {
+            text-align: center;
+            margin-bottom: 8mm;
+            padding-bottom: 4mm;
+            border-bottom: 1.5px solid var(--accent-gold);
+        }
+
+        .logo {
+            width: 35mm;
+            height: auto;
+            margin-bottom: 3mm;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18pt;
+            color: var(--accent-gold);
+            margin-bottom: 2mm;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .address {
+            font-size: 8pt;
+            color: #a8a8a8;
+        }
+
+        /* Sections de menu */
+        .menu-section {
+            margin-bottom: 5mm;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            margin-bottom: 3mm;
+            padding-bottom: 2mm;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+
+        .section-icon {
+            width: 8mm;
+            height: 8mm;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 12pt;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 10pt;
+            color: #f1e4c3;
+            margin: 3mm 0 2mm 0;
+            padding-left: 3mm;
+            border-left: 2px solid var(--accent-gold);
+        }
+
+        /* Articles du menu */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5mm;
+            font-size: 8.5pt;
+            line-height: 1.3;
+        }
+
+        .item-name {
+            flex: 1;
+            padding-right: 2mm;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--accent-gold);
+            white-space: nowrap;
+            font-size: 8.5pt;
+        }
+
+        .price-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.4);
+            margin: 0 2mm 2mm;
+            min-width: 5mm;
+        }
+
+        /* Colonnes pour optimiser l'espace */
+        .two-columns {
+            column-count: 2;
+            column-gap: 4mm;
+            column-rule: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .no-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        /* Pied de page */
+        .footer {
+            position: absolute;
+            bottom: 5mm;
+            left: 8mm;
+            right: 8mm;
+            text-align: center;
+            font-size: 7pt;
+            color: #a8a8a8;
+            border-top: 1px solid var(--accent-gold);
+            padding-top: 2mm;
+        }
+
+        /* Styles spécifiques pour différentes sections */
+        .compact-section .menu-item {
+            margin-bottom: 1mm;
+            font-size: 8pt;
+        }
+
+        .compact-section .item-price {
+            font-size: 8pt;
+        }
+
+        /* Optimisation de l'espace pour les vins */
+        .wine-item {
+            font-size: 7.5pt;
+            margin-bottom: 1mm;
+        }
+
+        .wine-item .item-name {
+            font-size: 7.5pt;
+        }
+
+        .wine-item .item-price {
+            font-size: 7.5pt;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 - RECTO : Boissons Chaudes/Fraîches + Spiritueux -->
+    <div class="page">
+        <div class="header">
+            <img src="logo.png" alt="Le Vaillant" class="logo">
+            <h1>Le Vaillant</h1>
+            <p class="address">159 Quai de Valmy, 75010 Paris</p>
+        </div>
+
+        <div class="two-columns">
+            <!-- Boissons Chaudes -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="boissons_chaudes.png" alt="" class="section-icon">
+                    <h2>Boissons Chaudes</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Expresso / Décaféiné</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">2,20 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Double expresso</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,40 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Café allongé</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">2,40 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Café noisette</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">2,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Café crème</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Chocolat chaud</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Cappuccino</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Thé / Infusion</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">3,80 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Lait chaud</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">3,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Chocolat Viennois</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,15 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Grog / Vin chaud</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6,00 €</span>
+                </div>
+            </div>
+
+            <!-- Boissons Fraîches -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="boissons_fraiches.png" alt="" class="section-icon">
+                    <h2>Boissons Fraîches</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Schweppes Agrum / Tonic</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Limonade</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Diabolo</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Jus (Orange / Pomme)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Abricot / ACE / Tomate / Ananas</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Fruits pressés (Citron / Orange)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Vittel 50 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">San Pellegrino 50 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Vittel 1 L</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">7,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">San Pellegrino 1 L</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">7,00 €</span>
+                </div>
+            </div>
+
+            <!-- Apéritifs -->
+            <div class="menu-section no-break compact-section">
+                <div class="section-title">
+                    <img src="aperitifs.png" alt="" class="section-icon">
+                    <h2>Apéritifs</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Ricard / Pastis 2 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">3,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Suze 4 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Kir</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Martini Blanc / Rouge 5 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Porto Blanc / Rouge 5 cl</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Kir Royal</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+            </div>
+
+            <!-- Digestifs -->
+            <div class="menu-section no-break compact-section">
+                <div class="section-title">
+                    <img src="digestifs.png" alt="" class="section-icon">
+                    <h2>Digestifs</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Armagnac / Cognac</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Get 27 / Get 31</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,90 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Malibu / Limoncello / Baileys</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Eau de vie (Poire / Mirabelle)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+            </div>
+
+            <!-- Whiskies & Rhums -->
+            <div class="menu-section no-break compact-section">
+                <div class="section-title">
+                    <img src="whiskies_rhums.png" alt="" class="section-icon">
+                    <h2>Whiskies & Rhums</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Jack Daniel's</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">10,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Nikka</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">11,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">J&B</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">10,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Chivas</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">11,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Don Papa</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">11,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Diplomático</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">11,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Rhums arrangés maison</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">9,00 €</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Prix en euros TTC</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PAGE 2 - VERSO : Cocktails + Restauration -->
+    <div class="page">
+        <div class="header">
+            <img src="logo.png" alt="Le Vaillant" class="logo">
+            <h1>Le Vaillant</h1>
+            <p class="address">159 Quai de Valmy, 75010 Paris</p>
+        </div>
+
+        <div class="two-columns">
+            <!-- Cocktails -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="cocktails_ptit_quai.png" alt="" class="section-icon">
+                    <h2>Cocktails "P'tit Quai"</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Mojito</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Ti'Punch</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">7,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Caipirinha / Caïpivodka</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Piña Colada</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Aperol Spritz</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Saint-Germain</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Bloody Mary</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Americano</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Moscow Mule</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">8,00 €</span>
+                </div>
+            </div>
+
+            <!-- Sans Alcool -->
+            <div class="menu-section no-break compact-section">
+                <div class="section-title">
+                    <img src="sans_alcool.png" alt="" class="section-icon">
+                    <h2>Sans Alcool</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Virgin Mojito / Virgin Colada</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Autres cocktails sur demande</span>
+                </div>
+            </div>
+
+            <!-- Les Pétillants -->
+            <div class="menu-section no-break compact-section">
+                <div class="section-title">
+                    <img src="vins_petillants.png" alt="" class="section-icon">
+                    <h2>Les Pétillants</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Prosecco</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6 € / 29 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Crémant de Loire</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6 € / 29 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Champagne Brut Nature</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">60 €</span>
+                </div>
+            </div>
+
+            <!-- Restauration -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="petites_faims_grands_plaisirs.png" alt="" class="section-icon">
+                    <h2>Petites faims et grands plaisirs</h2>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Petite planche charcuterie</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">13 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Planche Fromage/Charcuterie</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">15 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Planche Fromage</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">13 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Assiette Gourmande</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">15 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Tapas complets</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6 €</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Tapas (Brie - Chorizo - Piment)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,50 €</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Le Vaillant</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PAGE 3 - RECTO : Carte des Vins (Rouges et Blancs) -->
+    <div class="page">
+        <div class="header">
+            <img src="logo.png" alt="Le Vaillant" class="logo">
+            <h1>Carte des Vins</h1>
+            <p class="address">159 Quai de Valmy, 75010 Paris</p>
+        </div>
+
+        <div class="two-columns">
+            <!-- Vins Rouges -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="vins.png" alt="" class="section-icon">
+                    <h2>Vins Rouges</h2>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Midi et Soir (Île de France)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">3,90 € / 14 € / 17 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Vin de France</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">22 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">La Fleur de Lys IGP</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">22 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Les Petits Carreaux</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">17 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Côtes du Rhône</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4,80 € / 17,5 € / 24 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Treuillet AOC</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">38 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Bordeaux</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5,50 € / 17,5 € / 24 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Le Grand Humeau</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5,50 € / 20 € / 29 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Saumur Champigny AOC</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6,30 € / 22 € / 32 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Brouilly</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6,50 € / 25 € / 36 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Terre Nouvelle</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6,90 € / 26 € / 38 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Diablesse AOC Bio</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">29 €</span>
+                </div>
+            </div>
+
+            <!-- Vins Blancs -->
+            <div class="menu-section no-break">
+                <h3 class="subsection-title">Blancs</h3>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Chardonnay</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">4 € / 14 € / 21 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Pinot Noir (Terroir d'Altitude)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6,70 € / 24 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Pouilly Fumé</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">32 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Saint-Véran AOC</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">39 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Chablis Christophe Patrice AOC</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">39 €</span>
+                </div>
+            </div>
+
+            <!-- Vins Rosés -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="vins_roses.png" alt="" class="section-icon">
+                    <h2>Vins Rosés</h2>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Midi et Soir VDF</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">3,90 € / 18 € / 30 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Languedoc</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">30 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Courbière AOC</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5,90 € / 22 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Rosé de l'Atlantique IGP</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5 € / 15 € / 22 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Souvenir du Var (Gris IGP)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">5 € / 17 € / 24 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Pic Saint-Loup IGP Var Bio</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">20 € / 27 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Viva Bella (Corse IGP)</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">6 € / 29 €</span>
+                </div>
+            </div>
+
+            <!-- Les Grands Noms -->
+            <div class="menu-section no-break">
+                <div class="section-title">
+                    <img src="vins_grands_noms.png" alt="" class="section-icon">
+                    <h2>Les Grands Noms</h2>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Crozes-Hermitage « La Maurelle »</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">38 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Côtes de Provence « Héritage »</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">35 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Cru Bourgeois – Château Duplessis</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">63 €</span>
+                </div>
+                <div class="wine-item menu-item">
+                    <span class="item-name">Châteauneuf-du-Pape</span>
+                    <span class="price-dots"></span>
+                    <span class="item-price">74 €</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Verre / Demi-bouteille / Bouteille - Prix en euros TTC</p>
+        </div>
+    </div>
+</body>
+</html>
